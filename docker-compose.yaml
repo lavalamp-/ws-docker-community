@@ -1,0 +1,34 @@
+version: "3"
+
+services:
+  api:
+    image: wsbackend-api:latest
+    hostname: ws-api
+    build:
+      context: .
+      dockerfile: api.dockerfile
+    ports:
+      - "8000:8000"
+  tasknode:
+    image: wsbackend-tasknode:latest
+    build:
+      context: .
+      dockerfile: tasknode.dockerfile
+  redis:
+    image: redis:latest
+    hostname: ws-redis
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: ws-rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=wsuser
+      - RABBITMQ_DEFAULT_PASS=wspassword
+      - RABBITMQ_DEFAULT_VHOST=wsvhost
+  frontend:
+    image: wsfrontend:latest
+    hostname: ws-frontend
+    build:
+      context: .
+      dockerfile: frontend.dockerfile
+    ports:
+      - "8443:443"

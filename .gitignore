@@ -1,0 +1,5 @@
+nginx/server.crt
+nginx/server.key
+.DS_Store
+**/*/.DS_Store
+**/.DS_Store

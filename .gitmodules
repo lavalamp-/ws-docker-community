@@ -1,0 +1,6 @@
+[submodule "ws-backend"]
+	path = ws-backend
+	url = git@bitbucket.org:handsome_stan/ws-backend.git
+[submodule "ws-frontend"]
+	path = ws-frontend
+	url = git@bitbucket.org:handsome_stan/ws-frontend.git
