@@ -1,6 +1,6 @@
-[submodule "ws-backend"]
-	path = ws-backend
-	url = git@bitbucket.org:handsome_stan/ws-backend.git
-[submodule "ws-frontend"]
-	path = ws-frontend
-	url = git@bitbucket.org:handsome_stan/ws-frontend.git
+[submodule "ws-frontend-community"]
+	path = ws-frontend-community
+	url = https://github.com/lavalamp-/ws-frontend-community.git
+[submodule "ws-backend-community"]
+	path = ws-backend-community
+	url = https://github.com/lavalamp-/ws-backend-community.git
