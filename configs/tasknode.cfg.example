@@ -1,0 +1,192 @@
+[AWS]
+
+aws_key_id = [[REPLACE]]
+aws_secret_key = [[REPLACE]]
+aws_default_region = us-west-1
+aws_s3_bucket = websight-dev
+aws_s3_screenshots_path = screenshots
+aws_s3_default_acl = private
+aws_s3_certificates_path = certificates
+aws_s3_bad_html_path = bad-html
+aws_s3_uploads_path = user-uploads
+
+[Celery]
+
+celery_app_name = websight_celery
+celery_user = wsuser
+celery_pass = wspassword
+celery_host = wsdocker_rabbitmq_1
+celery_virtual_host = wsvhost
+celery_enable_utc = True
+celery_message_compression = gzip
+celery_track_started = True
+celeryd_prefetch_multiplier = 1
+celeryd_max_tasks_per_child = 250
+celery_task_serializer = json
+celery_redirect_stdouts = False
+celery_retry_delay = 10
+celery_es_update_delay = 1
+celery_worker_pool = prefork
+celery_port = 5672
+
+[Crawling]
+
+crawling_bot_name = websight-crawler
+crawling_depth_limit = 10
+crawling_depth_priority = 1
+crawling_user_agent = Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:50.0) Gecko/20100101 Firefox/50.0
+crawling_allow_all_error_codes = True
+crawling_max_crawl_time = 60
+crawling_concurrent_requests = 16
+crawling_concurrent_items = 100
+crawling_max_download_size = 512000
+crawling_enable_telnet_console = True
+crawling_local_storage_buffer_size = 100
+crawling_max_index_size = 5242880
+crawling_track_references = True
+
+[Database]
+
+db_host = [[REPLACE]]
+db_port = [[REPLACE]]
+db_name = [[REPLACE]]
+db_user = [[REPLACE]]
+db_password = [[REPLACE]]
+db_scheme = postgresql+pg8000
+
+[Django]
+
+django_settings_module = wsbackend.settings
+
+[DNS]
+
+dns_resolver_tries = 24
+dns_resolver_timeout = 2
+dns_hosts_file_location = /private/etc/hosts
+dns_dnsdb_api_key = [[REPLACE]]
+dns_dnsdb_api_host = https://api.dnsdb.info
+dns_dnsdb_record_types = A, CNAME, AAAA, MX, NS, SOA
+dns_dnsdb_ip_history_time = 31536000
+
+[Elasticsearch]
+
+es_username = [[REPLACE]]
+es_password = [[REPLACE]]
+es_host = [[REPLACE]]
+es_port = [[REPLACE]]
+es_use_ssl = False
+es_default_index = test-index
+es_scripting_language = painless
+es_bulk_update_max_size = 10485760
+es_use_aws = False
+es_user_info_index = user-info
+es_max_query_size = 10000
+
+[Files]
+
+files_base_directory = files
+files_networks_blacklist = networks_blacklist.txt
+files_default_scan_ports = default_scan_ports.csv
+files_dns_record_types = dns_record_types.csv
+files_dns_resolvers = resolvers.txt
+files_fingerprints = fingerprints.csv
+files_order_tiers = order_tiers.json
+files_user_agents = user_agents.csv
+files_tlds = tlds.txt
+files_extended_validation_oids = extended_validation_oids.csv
+
+[Filesystem]
+
+fs_temporary_file_dir = /tmp/
+
+[Fingerprinting]
+
+fingerprint_socket_timeout = 2
+
+[General]
+
+gen_default_encoding = utf-8
+gen_reset_password_timeout_minutes = 30
+gen_password_special_chars = ~`!@#$%%^&*()_-+={}[]:>;',</?*+
+gen_track_malformed_html = True
+
+[Http]
+
+http_proxy = http://127.0.0.1:8080
+http_proxy_enabled = False
+
+[Inspection]
+
+inspection_socket_connect_timeout = 2
+inspection_screenshot_join_timeout = 5
+inspection_user_agent = Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:50.0) Gecko/20100101 Firefox/50.0
+inspection_http_connect_timeout = 2.5
+inspection_http_read_timeout = 5.0
+
+[Logging]
+
+log_directory = /tmp/log/websight
+log_base_file = base.log
+log_base_level = INFO
+log_crawling_file = crawling.log
+log_crawling_level = INFO
+log_task_file = task.log
+log_task_level = INFO
+log_max_bytes = 10485760
+log_max_files = 10
+log_error_file = error.log
+
+[Payments]
+
+payments_stripe_publishable_key = [[REPLACE]]
+payments_stripe_secret_key = [[REPLACE]]
+
+[Recaptcha]
+
+recaptcha_login_attempt_threshold = 3
+recaptcha_secret = [[REPLACE]]
+recaptcha_timeout_minutes = 1
+
+[Redis]
+
+redis_host = wsdocker_redis_1
+redis_port = 6379
+
+[Rest]
+
+rest_min_network_mask_length = 16
+rest_max_network_mask_length = 32
+rest_domains_file_cutoff = 200
+rest_domain = [[REPLACE]]
+
+[Scanning]
+
+scan_credits_per_period = 1
+scan_credit_period = 86400
+
+[Selenium]
+
+selenium_screenshot_delay = 2
+selenium_screenshot_format = png
+selenium_window_height = 768
+selenium_window_width = 1024
+
+[SMTP]
+
+smtp_username = [[REPLACE]]
+smtp_password = [[REPLACE]]
+smtp_host = [[REPLACE]]
+smtp_port = [[REPLACE]]
+
+[Tasks]
+
+task_default_index = ws-tasks
+task_service_monitoring_enabled = False
+task_minimum_network_service_scan_interval = 21600
+task_enforce_network_service_scan_interval = False
+task_minimum_domain_name_scan_interval = 900
+task_enforce_domain_name_scan_interval = False
+task_minimum_ip_address_scan_interval = 1800
+task_enforce_ip_address_scan_interval = False
+task_minimum_web_service_scan_interval = 10800
+task_enforce_web_service_scan_interval = False

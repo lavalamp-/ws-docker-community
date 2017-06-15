@@ -1,0 +1,33 @@
+import { OpaqueToken } from "@angular/core";
+
+export let APP_CONFIG = new OpaqueToken('app.config');
+
+export interface IAppConfig {
+  apiUrl: string;
+  paginationKey: string;
+  orderingKey: string;
+  searchKey: string;
+  exportKey: string;
+  navbarHeight: number;
+  lightboxMaxHeightPercent: number;
+  specialChars: string;
+  stripePublishableKey: string;
+  includeFieldsKey: string;
+  excludeFieldsKey: string;
+  presentationKey: string;
+}
+
+export const WsAppConfig: IAppConfig = {
+  apiUrl: 'http://127.0.0.1:8000/',
+  paginationKey: 'page',
+  orderingKey: 'order',
+  searchKey: 'search',
+  exportKey: 'export',
+  navbarHeight: 50,
+  lightboxMaxHeightPercent: 0.8,
+  specialChars: '~`!@#$%%^&*()_-+={}[]:>;\',</?*+',
+  stripePublishableKey: '[[REPLACE]]',
+  includeFieldsKey: 'include_fields',
+  excludeFieldsKey: 'exclude_fields',
+  presentationKey: 'presentation',
+};

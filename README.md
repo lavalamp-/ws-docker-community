@@ -67,3 +67,7 @@ cd ws-docker-community
 
 Once the repository is cloned, pull down the front- and back-end repositories that the Docker deployment relies upon by running the following command:
 
+```
+git submodule update --init --recursive
+```
+

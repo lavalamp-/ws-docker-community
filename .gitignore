@@ -3,3 +3,6 @@ nginx/server.key
 .DS_Store
 **/*/.DS_Store
 **/.DS_Store
+configs/app.config.ts
+configs/settings.py
+configs/tasknode.cfg
