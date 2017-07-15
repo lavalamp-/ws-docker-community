@@ -4,7 +4,7 @@ MAINTAINER Christopher Grayson "chris@websight.io"
 
 RUN apt-get update
 
-ADD ws-backend /ws-backend
+ADD ws-backend-community /ws-backend
 
 RUN pip install -r /ws-backend/requirements.txt
 

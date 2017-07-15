@@ -22,12 +22,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '[[REPLACE]]'
+SECRET_KEY = '[[DJANGO_SECRET]]'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [
+    [[ALLOWED_HOSTS_LIST]]
+]
 
 
 # Application definition
@@ -85,11 +87,11 @@ WSGI_APPLICATION = 'wsbackend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': '[[REPLACE]]',
-        'USER': '[[REPLACE]]',
-        'PASSWORD': '[[REPLACE]]',
-        'HOST': '[[REPLACE]]',
-        'PORT': '[[REPLACE]]',
+        'NAME': '[[DB_NAME]]',
+        'USER': '[[DB_USER]]',
+        'PASSWORD': '[[DB_PASSWORD]]',
+        'HOST': '[[DB_HOST]]',
+        'PORT': '[[DB_PORT]]',
     }
 }
 
@@ -155,7 +157,12 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'rest.lib.web_sight_exception_handler',
 }
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
+
+
+CORS_ORIGIN_WHITELIST = (
+    [[CORS_ORIGINS]]
+)
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -172,11 +179,11 @@ ALDJEMY_DATA_TYPES = {
 }
 
 #Email Settings
-EMAIL_HOST = '[[REPLACE]]'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = '[[REPLACE]]'
-EMAIL_HOST_PASSWORD = '[[REPLACE]]'
-EMAIL_USE_TLS = True
+EMAIL_HOST = '[[SMTP_HOST]]'
+EMAIL_PORT = [[SMTP_PORT]]
+EMAIL_HOST_USER = '[[SMTP_USER]]'
+EMAIL_HOST_PASSWORD = '[[SMTP_PASSWORD]]'
+EMAIL_USE_TLS = [[SMTP_USE_TLS]]
 
 # Query Parameter Settings
 
@@ -189,4 +196,4 @@ EXCLUDE_FIELDS_PARAM = 'exclude_fields'
 
 # Unit Testing
 
-TEST_RUNNER = 'tests.runner.WebSightDiscoverRunner'
+TEST_RUNNER = "tests.runner.WebSightDiscoverRunner"

@@ -13,7 +13,7 @@ ENV NODE_VERSION 6.10.0
 ENV ANGULAR_CLI_VERSION 1.0.0-beta.24
 
 RUN mkdir /ws-frontend
-ADD ws-frontend/package.json /ws-frontend/package.json
+ADD ws-frontend-community/package.json /ws-frontend/package.json
 
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 

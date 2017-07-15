@@ -15,7 +15,7 @@ aws_s3_uploads_path = user-uploads
 celery_app_name = websight_celery
 celery_user = wsuser
 celery_pass = wspassword
-celery_host = wsdocker_rabbitmq_1
+celery_host = rabbitmq
 celery_virtual_host = wsvhost
 celery_enable_utc = True
 celery_message_compression = gzip
@@ -149,7 +149,7 @@ recaptcha_timeout_minutes = 1
 
 [Redis]
 
-redis_host = wsdocker_redis_1
+redis_host = redis
 redis_port = 6379
 
 [Rest]
