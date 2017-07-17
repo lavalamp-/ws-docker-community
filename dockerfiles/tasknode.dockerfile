@@ -5,7 +5,7 @@ MAINTAINER Christopher Grayson "chris@websight.io"
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
 RUN apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y curl zmap nmap \
     && apt-get -y autoclean
 
 ENV NVM_DIR /usr/local/nvm
@@ -18,5 +18,7 @@ RUN source $NVM_DIR/nvm.sh \
     && nvm alias default $NODE_VERSION \
     && nvm use default \
     && npm install -g phantomjs-prebuilt
+
+ENV PATH="/usr/local/nvm/versions/node/v6.10.0/bin:${PATH}"
 
 CMD celery -A tasknode worker -l info -P prefork

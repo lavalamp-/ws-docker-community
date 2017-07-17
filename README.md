@@ -226,3 +226,63 @@ docker build -f dockerfiles/frontend.dockerfile -t wsfrontend:latest .
 With the images all successfully built, the only step left is initializing our database and Elasticsearch and then we are good to go!
 
 ## Initializing Data Stores
+
+Now that all of the images are built, we can use the images to initialize the persistent data stores used by Web Sight. To do so, run the following command from the root project directory:
+
+```
+./scripts/initialize-data-stores.sh
+```
+
+This script will do the following:
+
+1. Create all of the database tables
+2. Create the default database objects in all of the relevant database tables
+3. Create the Elasticsearch document models for the data Web Sight stores in Elasticsearch
+4. Prompt you to create a user (this user will be a super user of the application)
+5. Activate the user account that you added
+
+With the data stores now fully populated, we can run some tests to make sure that all of the components have been set up correctly.
+
+## Testing The deployment
+
+With the images built and the persistent data stores initialized, we are finally ready to test our deployment to make sure that everything is working as expected.
+
+First, let's run the test suite to make sure that all of our unit tests are passing:
+
+```
+./scripts/run-tasknode-tests.sh
+```
+
+This script will spin up a Web Sight deployment via `docker-compose`, run all of the unit tests on the `tasknode` instance, and then spin the deployment back down. We can then run all of the same tests on the `api` instance:
+
+```
+./scripts/run-api-tests.sh
+```
+
+If all of the tests on both the `api` and `tasknode` instances passed, then we have one last utility that we can use to ensure that the deployment is configured correctly and is ready to go!
+
+The `websight-backend-community` project contains a deployment checking class. To invoke this class and check for the presence of all necessary configuration, run the following:
+
+```
+./scripts/run-tasknode-deploy-checker.sh
+```
+
+The output of this script will be a number of lines indicating whether or not a particular required component of the deployment is present and available. If all of the lines display `True` then we know all of the various requirements of our deployment have been fulfilled!
+
+## Running Web Sight
+
+We made it!! We have built all of the images, checked that everything was configured correctly, and can now spin up the Docker deployment. To get Web Sight going, do the following:
+
+```
+docker-compose up -d
+```
+
+The `-d` can be omitted if you'd like to see the live logs as the system spins up. Once everything is up and running, you should be able to access the front-end web application at the following URL:
+
+https://127.0.0.1:8443
+
+The API should be available at the following URL:
+
+http://127.0.0.1:8000
+
+Go ahead and start populating organizations, running scans, and enumerating attack surface with your brand-spanking-new Web Sight deployment!
