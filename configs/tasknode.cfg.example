@@ -3,20 +3,15 @@
 aws_key_id = [[REPLACE]]
 aws_secret_key = [[REPLACE]]
 aws_default_region = us-west-1
-aws_s3_bucket = websight-dev
-aws_s3_screenshots_path = screenshots
 aws_s3_default_acl = private
-aws_s3_certificates_path = certificates
-aws_s3_bad_html_path = bad-html
-aws_s3_uploads_path = user-uploads
 
 [Celery]
 
-celery_app_name = websight_celery
-celery_user = wsuser
-celery_pass = wspassword
-celery_host = rabbitmq
-celery_virtual_host = wsvhost
+celery_app_name = datahound_celery
+celery_user = [[REPLACE]]
+celery_pass = [[REPLACE]]
+celery_host = [[REPLACE]]
+celery_virtual_host = [[REPLACE]]
 celery_enable_utc = True
 celery_message_compression = gzip
 celery_track_started = True
@@ -62,7 +57,7 @@ django_settings_module = wsbackend.settings
 
 dns_resolver_tries = 24
 dns_resolver_timeout = 2
-dns_hosts_file_location = /private/etc/hosts
+dns_hosts_file_location = /etc/hosts
 dns_dnsdb_api_key = [[REPLACE]]
 dns_dnsdb_api_host = https://api.dnsdb.info
 dns_dnsdb_record_types = A, CNAME, AAAA, MX, NS, SOA
@@ -90,7 +85,6 @@ files_default_scan_ports = default_scan_ports.csv
 files_dns_record_types = dns_record_types.csv
 files_dns_resolvers = resolvers.txt
 files_fingerprints = fingerprints.csv
-files_order_tiers = order_tiers.json
 files_user_agents = user_agents.csv
 files_tlds = tlds.txt
 files_extended_validation_oids = extended_validation_oids.csv
@@ -102,6 +96,10 @@ fs_temporary_file_dir = /tmp/
 [Fingerprinting]
 
 fingerprint_socket_timeout = 2
+
+[GCP]
+
+gcp_creds_file_path = files/gce.json
 
 [General]
 
@@ -136,11 +134,6 @@ log_max_bytes = 10485760
 log_max_files = 10
 log_error_file = error.log
 
-[Payments]
-
-payments_stripe_publishable_key = [[REPLACE]]
-payments_stripe_secret_key = [[REPLACE]]
-
 [Recaptcha]
 
 recaptcha_login_attempt_threshold = 3
@@ -149,8 +142,8 @@ recaptcha_timeout_minutes = 1
 
 [Redis]
 
-redis_host = redis
-redis_port = 6379
+redis_host = [[REPLACE]]
+redis_port = [[REPLACE]]
 
 [Rest]
 
@@ -158,11 +151,6 @@ rest_min_network_mask_length = 16
 rest_max_network_mask_length = 32
 rest_domains_file_cutoff = 200
 rest_domain = [[REPLACE]]
-
-[Scanning]
-
-scan_credits_per_period = 1
-scan_credit_period = 86400
 
 [Selenium]
 
@@ -177,6 +165,16 @@ smtp_username = [[REPLACE]]
 smtp_password = [[REPLACE]]
 smtp_host = [[REPLACE]]
 smtp_port = [[REPLACE]]
+
+[Storage]
+
+storage_platform = gcs
+storage_bucket = websight-dev
+storage_screenshots_path = screenshots
+storage_certificates_path = certificates
+storage_bad_html_path = bad-html
+storage_uploads_path = user-uploads
+storage_signed_url_duration = 3600
 
 [Tasks]
 

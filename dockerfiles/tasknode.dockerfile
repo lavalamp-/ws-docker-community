@@ -2,7 +2,7 @@ FROM wsbackend-base:latest
 
 MAINTAINER Christopher Grayson "chris@websight.io"
 
-RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+RUN mv /bin/sh /bin/sh.old && ln -s /bin/bash /bin/sh
 
 RUN apt-get update \
     && apt-get install -y curl zmap nmap \

@@ -6,3 +6,4 @@ nginx/server.key
 configs/app.config.ts
 configs/settings.py
 configs/tasknode.cfg
+secrets/gce.json
