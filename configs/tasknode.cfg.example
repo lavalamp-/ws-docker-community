@@ -7,11 +7,11 @@ aws_s3_default_acl = private
 
 [Celery]
 
-celery_app_name = datahound_celery
-celery_user = [[REPLACE]]
-celery_pass = [[REPLACE]]
-celery_host = [[REPLACE]]
-celery_virtual_host = [[REPLACE]]
+celery_app_name = websight_celery
+celery_user = wsuser
+celery_pass = wspassword
+celery_host = rabbitmq
+celery_virtual_host = wsvhost
 celery_enable_utc = True
 celery_message_compression = gzip
 celery_track_started = True
@@ -142,8 +142,8 @@ recaptcha_timeout_minutes = 1
 
 [Redis]
 
-redis_host = [[REPLACE]]
-redis_port = [[REPLACE]]
+redis_host = redis
+redis_port = 6379
 
 [Rest]
 
