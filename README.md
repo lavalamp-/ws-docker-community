@@ -72,6 +72,12 @@ Once the repository is cloned, pull down the front- and back-end repositories th
 git submodule update --init --recursive
 ```
 
+For reference, if you need to build images again due to new code being available in either `ws-backend-community` or `ws-frontend-community`, you can run the following command to pull down the latest of both repositories:
+
+```
+git submodule update --recursive --remote
+```
+
 With all of the relevant code now pulled down, we must install and configure the non-Dockerized dependencies that Web Sight relies upon. Note that the installation process for these dependencies can vary greatly depending on what platform you are using, so I'll leave links here to the technologies and their respective installation instructions:
 
 * [PostgreSQL](https://www.postgresql.org/download/)
@@ -84,7 +90,7 @@ Once all of these dependencies have been installed, you will want to:
 3. Ensure that the given PostgreSQL user can [access the database server from the IP address(es) where you'll be running Web Sight from](https://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html)
 4. Create a [user within Elasticsearch](https://www.elastic.co/guide/en/x-pack/current/setting-up-authentication.html)
 
-With all of the Web Sight code pulled down and the software dependencies installed, we can move on to configuring the deployment
+With all of the Web Sight code pulled down and the software dependencies installed, we can move on to configuring the deployment.
 
 ## Configuration
 
