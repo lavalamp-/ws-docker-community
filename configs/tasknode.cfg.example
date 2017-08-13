@@ -65,10 +65,8 @@ dns_dnsdb_ip_history_time = 31536000
 
 [Elasticsearch]
 
-es_username = [[REPLACE]]
-es_password = [[REPLACE]]
-es_host = [[REPLACE]]
-es_port = [[REPLACE]]
+es_host = elasticsearch
+es_port = 9200
 es_use_ssl = False
 es_default_index = test-index
 es_scripting_language = painless

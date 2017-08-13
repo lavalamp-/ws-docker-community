@@ -7,6 +7,8 @@ services:
     build:
       context: .
       dockerfile: api.dockerfile
+    links:
+      - elasticsearch
     ports:
       - "8000:8000"
   tasknode:
@@ -14,9 +16,18 @@ services:
     build:
       context: .
       dockerfile: tasknode.dockerfile
+    links:
+      - elasticsearch
   redis:
     image: redis:latest
     hostname: ws-redis
+  elasticsearch:
+    image: elasticsearch:latest
+    hostname: ws-elasticsearch
+    volumes:
+      - "./data/elasticsearch:/usr/share/elasticsearch/data"
+    ports:
+      - "9200:9200"
   rabbitmq:
     image: rabbitmq:3-management
     hostname: ws-rabbitmq
@@ -30,5 +41,7 @@ services:
     build:
       context: .
       dockerfile: frontend.dockerfile
+    links:
+      - elasticsearch
     ports:
       - "8443:443"
