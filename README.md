@@ -1,5 +1,7 @@
 # Web Sight Docker Deployment
 
+[![Black Hat Arsenal](https://github.com/toolswatch/badges/blob/master/arsenal/2017.svg)](https://www.toolswatch.org/2017/06/the-black-hat-arsenal-usa-2017-phenomenal-line-up-announced/)
+
 Web Sight is a software platform that enables red and blue teams to automate the information gathering processes required by their day-to-day jobs. At present, Web Sight performs the following activities:
 
 * Domain name enumeration
@@ -193,11 +195,13 @@ Now let's fill the `settings.py` file out. The example `settings.py` file contai
 [[SMTP_USE_TLS]] - A boolean value depicting whether or not to connect to your SMTP server using SSL/TLS.
 ```
 
-Now that all of the configuration files are filled out, let's generate a self-signed SSL certificate for our front-end application to use:
+Now that all of the configuration files are filled out, we need to create a `gce.json` file. If you're not planning on using Google Compute Engine, then do the following to create an empty placeholder:
 
 ```
-openssl req -x509 -newkey rsa:4096 -keyout nginx/server.key -out nginx/server.crt -days 365 -nodes
+touch secrets/gce.json
 ```
+
+If, on the other hand, you are using GCE, then place the service account credential file in `secrets/gce.json`.
 
 With all of that done, your Dockerized Web Sight deployment should be entirely configured! We can now move on to building the Docker images.
 

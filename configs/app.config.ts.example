@@ -11,7 +11,6 @@ export interface IAppConfig {
   navbarHeight: number;
   lightboxMaxHeightPercent: number;
   specialChars: string;
-  stripePublishableKey: string;
   includeFieldsKey: string;
   excludeFieldsKey: string;
   presentationKey: string;
@@ -26,7 +25,6 @@ export const WsAppConfig: IAppConfig = {
   navbarHeight: 50,
   lightboxMaxHeightPercent: 0.8,
   specialChars: '~`!@#$%%^&*()_-+={}[]:>;\',</?*+',
-  stripePublishableKey: '[[REPLACE]]',
   includeFieldsKey: 'include_fields',
   excludeFieldsKey: 'exclude_fields',
   presentationKey: 'presentation',

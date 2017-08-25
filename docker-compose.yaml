@@ -31,4 +31,4 @@ services:
       context: .
       dockerfile: frontend.dockerfile
     ports:
-      - "8443:443"
+      - "8001:80"

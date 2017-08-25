@@ -26,7 +26,5 @@ RUN source $NVM_DIR/nvm.sh \
     && npm install
 
 ADD nginx/frontend.nginx.conf /etc/nginx/conf.d/default.conf
-ADD nginx/server.key /etc/ssl/certs/ws-server.key
-ADD nginx/server.crt /etc/ssl/certs/ws-server.crt
 
 EXPOSE 80 443
