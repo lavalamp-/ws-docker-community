@@ -8,3 +8,4 @@ configs/settings.py
 configs/tasknode.cfg
 secrets/gce.json
 data/elasticsearch/
+data/postgres/

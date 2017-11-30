@@ -9,6 +9,7 @@ services:
       dockerfile: api.dockerfile
     links:
       - elasticsearch
+      - postgres
     ports:
       - "8000:8000"
   tasknode:
@@ -18,6 +19,7 @@ services:
       dockerfile: tasknode.dockerfile
     links:
       - elasticsearch
+      - postgres
   redis:
     image: redis:latest
     hostname: ws-redis
@@ -41,7 +43,19 @@ services:
     build:
       context: .
       dockerfile: frontend.dockerfile
-    links:
-      - elasticsearch
     ports:
       - "8001:80"
+    links:
+      - elasticsearch
+      - postgres
+  postgres:
+    image: postgres:alpine
+    hostname: ws-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - "./data/postgres/data:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"

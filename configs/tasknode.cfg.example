@@ -23,6 +23,7 @@ celery_retry_delay = 10
 celery_es_update_delay = 1
 celery_worker_pool = prefork
 celery_port = 5672
+celery_priority_queue_name = priority
 
 [Crawling]
 
@@ -42,11 +43,11 @@ crawling_track_references = True
 
 [Database]
 
-db_host = [[REPLACE]]
-db_port = [[REPLACE]]
-db_name = [[REPLACE]]
-db_user = [[REPLACE]]
-db_password = [[REPLACE]]
+db_host = postgres
+db_port = 5432
+db_name = websight
+db_user = postgres
+db_password = postgres
 db_scheme = postgresql+pg8000
 
 [Django]
@@ -65,6 +66,9 @@ dns_dnsdb_ip_history_time = 31536000
 
 [Elasticsearch]
 
+es_use_http_auth = False
+es_username = elastic
+es_password = password
 es_host = elasticsearch
 es_port = 9200
 es_use_ssl = False
@@ -86,6 +90,7 @@ files_fingerprints = fingerprints.csv
 files_user_agents = user_agents.csv
 files_tlds = tlds.txt
 files_extended_validation_oids = extended_validation_oids.csv
+files_default_scan_configs = default_scan_configs.json
 
 [Filesystem]
 
@@ -98,6 +103,7 @@ fingerprint_socket_timeout = 2
 [GCP]
 
 gcp_creds_file_path = files/gce.json
+gcp_project_name = [[REPLACE]]
 
 [General]
 
@@ -132,11 +138,19 @@ log_max_bytes = 10485760
 log_max_files = 10
 log_error_file = error.log
 
-[Recaptcha]
+[PubSub]
 
-recaptcha_login_attempt_threshold = 3
-recaptcha_secret = [[REPLACE]]
-recaptcha_timeout_minutes = 1
+pubsub_enabled = False
+
+# Valid values: gcp
+pubsub_connector_type = gcp
+
+pubsub_receive_topic = websight_in
+pubsub_publish_topic = websight_out
+pubsub_retrieve_interval = 5
+pubsub_poll_interval = 30.0
+pubsub_gcp_project_name =
+pubsub_es_publish_retry_count = 3
 
 [Redis]
 
@@ -186,3 +200,5 @@ task_minimum_ip_address_scan_interval = 1800
 task_enforce_ip_address_scan_interval = False
 task_minimum_web_service_scan_interval = 10800
 task_enforce_web_service_scan_interval = False
+task_network_scanning_interval = 7200
+task_domain_scanning_interval = 7200
