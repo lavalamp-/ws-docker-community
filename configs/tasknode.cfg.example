@@ -162,7 +162,7 @@ redis_port = 6379
 rest_min_network_mask_length = 16
 rest_max_network_mask_length = 32
 rest_domains_file_cutoff = 200
-rest_domain = [[REPLACE]]
+rest_domain = http://127.0.0.1:8001/
 
 [Selenium]
 

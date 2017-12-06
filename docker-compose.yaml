@@ -10,6 +10,7 @@ services:
     links:
       - elasticsearch
       - postgres
+      - rabbitmq
     ports:
       - "8000:8000"
   tasknode:
@@ -20,6 +21,7 @@ services:
     links:
       - elasticsearch
       - postgres
+      - rabbitmq
   redis:
     image: redis:latest
     hostname: ws-redis
@@ -30,6 +32,8 @@ services:
       - "./data/elasticsearch:/usr/share/elasticsearch/data"
     ports:
       - "9200:9200"
+    environment:
+      - ES_JAVA_OPTS=-Xms1024m -Xmx1024m
   rabbitmq:
     image: rabbitmq:3-management
     hostname: ws-rabbitmq
@@ -55,7 +59,7 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+      - POSTGRES_DB=websight
     volumes:
-      - "./data/postgres/data:/var/lib/postgresql/data"
-    ports:
-      - "5432:5432"
+      - "./data/postgres:/var/lib/postgresql/data"
